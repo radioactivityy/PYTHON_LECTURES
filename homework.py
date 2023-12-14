@@ -11,7 +11,7 @@ def addition(num1,num2):
 # Testing the function
 result1 = addition(3,2)
 result2 = addition(-3,-6)
-result3 = addition(7,3)
+result3 = addition(7,3) 
 
 #Printing the results
 print("Result 1:", result1) # 5 
