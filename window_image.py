@@ -11,7 +11,7 @@ pygame.init()
 # Set the background color RGB
 background_color = (255, 153, 153)
 # Set the initial position of the image
-position = (5,10) 
+position = (0,0) 
 
 # Set up the window
 window_width, window_height = 500, 500
@@ -20,7 +20,18 @@ window = pygame.display.set_mode((window_width, window_height))
 # Set the title of the window
 pygame.display.set_caption("My First Pygame Window")
 # Load an image from a file
+
+# Load an image from a file and check to make sure it needs scaling
 image = pygame.image.load("pacman.png")
+image_width, image_height = image.get_size()
+scaling_factor = min(window_width / image_width, window_height / image_height)
+new_image_size = (int(image_width * scaling_factor), int(image_height * scaling_factor))
+
+
+# Scale the image if either dimension is larger than the window
+if new_image_size < (image_width, image_height):
+    image = pygame.transform.scale(image,new_image_size)
+    
 exit = False
 
 
