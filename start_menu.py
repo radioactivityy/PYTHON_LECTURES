@@ -1,11 +1,4 @@
 # pylint: disable=E1101
-
-# Turning texts Start and Exit into button.
-# Change the font of the start menu.  
-# Change the background. 
-
-
-# pylint: disable=E1101
 import pygame
 import sys
 
@@ -28,7 +21,11 @@ color_white = (255, 255, 255)
 color_dark = (100, 100, 100)
 
 # Defining a font
-font = pygame.font.SysFont('Arial', 40)
+font = pygame.font.SysFont('Users\gabby\Downloads\Roboto', 60)
+
+# Load and scale the background image
+background_image = pygame.image.load("maze.png")
+background_image = pygame.transform.scale(background_image, res)
 
 # Rendering a welcome message
 welcome_message = font.render('Welcome to the Maze Game!', True, color_white)
@@ -43,8 +40,8 @@ while True:
             pygame.quit()
             sys.exit()
 
-    # Fills the screen with a color
-    screen.fill((0, 0, 0))
+    # Draw the background image first
+    screen.blit(background_image, (0, 0))
 
     # Display the welcome message at the top
     screen.blit(welcome_message, (res[0] // 2 - welcome_message.get_width() // 2, 100))
@@ -67,5 +64,3 @@ while True:
     elif key[pygame.K_2]:
         pygame.quit()
         sys.exit()
-                       
-
