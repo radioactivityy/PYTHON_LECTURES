@@ -4,6 +4,8 @@ import pygame
 import pygame_menu
 
 pygame.init()
+
+
 surface = pygame.display.set_mode((600, 400))
 
 def set_difficulty(value, difficulty):

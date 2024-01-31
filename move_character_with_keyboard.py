@@ -14,8 +14,10 @@ pygame.display.set_caption("Example to move character")
 
 # Load the character image
 char_img = pygame.image.load("pacman.png")
+char_img = pygame.transform.scale(char_img, (50,50)) #Adjust the size of an object in Python 
 char_rect = char_img.get_rect()
-char_rect.center = (s_width // 2, s_height // 2)
+# Setting and image's position to the left corner 
+char_rect.topleft = (0,0)
 
 # Set up the clock
 clock = pygame.time.Clock()
