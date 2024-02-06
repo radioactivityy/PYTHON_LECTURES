@@ -3,6 +3,9 @@ import pygame
 import pygame_menu
 
 pygame.init()
+
+#Define color
+BLACK = (0, 0, 0)
 surface = pygame.display.set_mode((600, 400))
 pygame.display.set_caption("Start to Maze Game!")
 
@@ -11,15 +14,17 @@ def set_difficulty(value, difficulty):
     pass
 
 def start_the_game():
-    # Do the job here!
-    pass
+    print("You have clicked Start!")
 
-menu = pygame_menu.Menu('Welcome', 400, 300, theme=pygame_menu.themes.THEME_BLUE)
+def quit_game():
+    pygame.quit()
+    quit()
+    
+menu = pygame_menu.Menu('Welcome', 400, 300, theme=pygame_menu.themes.THEME_DARK)
 
-menu.add_text_input('Name:', default='John Doe')
-menu.add_selector('Difficulty:', [('Hard', 1), ('Easy', 2)], onchange=set_difficulty)
-menu.add_button('Play', start_the_game)
-menu.add_button('Quit', pygame_menu.events.EXIT)
+menu.add.selector('Difficulty:', [('Hard', 1), ('Easy', 2)], onchange=set_difficulty)
+menu.add.button('Play', start_the_game)
+menu.add.button('Quit', quit_game)
 
 # Main game loop
 while True:
