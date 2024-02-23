@@ -9,12 +9,18 @@ BLACK = (0, 0, 0)
 surface = pygame.display.set_mode((600, 400))
 pygame.display.set_caption("Start to Maze Game!")
 
+# Define states
+MENU = 0
+GAME = 1
+current_state = MENU
+
 def set_difficulty(value, difficulty):
     # Do the job here!
     pass
 
 def start_the_game():
-    print("You have clicked Start!")
+    global current_state
+    current_state = GAME
 
 def quit_game():
     pygame.quit()
@@ -24,7 +30,7 @@ menu = pygame_menu.Menu('Welcome', 400, 300, theme=pygame_menu.themes.THEME_DARK
 
 menu.add.selector('Difficulty:', [('Hard', 1), ('Easy', 2)], onchange=set_difficulty)
 menu.add.button('Play', start_the_game)
-menu.add.button('Quit', quit_game)
+menu.add.button('Quit', pygame_menu.events.EXIT)
 
 # Main game loop
 while True:
@@ -36,10 +42,16 @@ while True:
             # Quit Pygame and exit the program
             exit()
 
-    if menu.is_enabled():
+    if current_state == MENU:
         menu.update(events)
         menu.draw(surface)
+        
+    elif current_state == GAME:
+        start_the_game()
+        # Create new game window
+        game_window = pygame.display.set_mode((800,600))
+        pygame.display.set_caption("Game Window")
 
-        pygame.display.flip()
+    pygame.display.flip()
 
     pygame.time.Clock().tick(60)
